@@ -19,12 +19,6 @@ const Nav = () => {
     setUpProviders();
   }, []);
 
-  useEffect(() => {
-    if(providers){
-      alert(providers)
-    }
-  }, [providers]);
-
   return (
     <nav className="flex-between w-full mb-16 pt-3">
       <Link href="/" className="flex gap-2 flex-center">
@@ -50,7 +44,7 @@ const Nav = () => {
             </button>
             <Link href="/profile">
               <Image
-                src={logo}
+                src={session?.user.image}
                 alt="Profile"
                 width={37}
                 height={37}
@@ -72,7 +66,7 @@ const Nav = () => {
                 </button>
               ))
             ) : (
-              <p>No providers available</p>
+              <p></p>
             )}
           </>
         )}
@@ -82,7 +76,7 @@ const Nav = () => {
         {session?.user ? (
           <div>
             <Image
-              src={logo}
+              src={session?.user.image}
               alt="Profile"
               width={37}
               height={37}
