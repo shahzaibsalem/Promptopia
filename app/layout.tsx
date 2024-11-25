@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Nav from "../components/Nav";
-import Provider from '@/components/Provider'
+import Nav from "../pages/Nav";
+import Provider from '@/pages/Provider'
 
 export const metadata: Metadata = {
   title: "Promptopia",

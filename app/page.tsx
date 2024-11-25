@@ -1,4 +1,4 @@
-import Feed from '../components/Feed'
+import Feed from '../pages/Feed'
 export default function Home() {
   return (
     <section className="w-full flex-center flex-col">
