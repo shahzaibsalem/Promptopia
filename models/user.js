@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
-const Userschema = new Schema({
+const UserSchema = new Schema({
   email: {
     type: String,
     unique: [true, "Email already exists!"],
@@ -15,7 +15,6 @@ const Userschema = new Schema({
     ],
     validate: {
       validator: async function (value) {
-        // Check for consecutive underscores/periods (this ensures there's no more than one underscore/period in a row)
         if (/([_.])\1/.test(value)) {
           throw new Error(
             "Username cannot contain consecutive underscores or periods."
@@ -31,5 +30,5 @@ const Userschema = new Schema({
   },
 });
 
-const User = models.User || model("User", Userschema);
+const User = models.User || model("User", UserSchema);
 export default User;
