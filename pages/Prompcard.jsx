@@ -1,17 +1,16 @@
 "use client";
 
-import { use, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import copy from "@/public/assets/images/copy-48.png";
 import tick from "@/public/assets/images/check-mark-3-48.png";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
-import { useRouter } from "next/router";
-import User from "@/models/user";
+// import { useRouter } from "next/navigation";
 
 const Prompcard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const pathname = usePathname();
-  const router = useRouter();
+  // const router = useRouter();
   const { data: session } = useSession();
 
   const [copied, setCopied] = useState("");
@@ -66,10 +65,16 @@ const Prompcard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
       </p>
       {session?.user?.id === post.creator._id && pathname === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">
-          <p className="green_gradient text-sm font-inter cursor-pointer">
+          <p
+            className="green_gradient text-sm font-inter cursor-pointer"
+            onClick={() => handleEdit()}
+          >
             Edit
           </p>
-          <p className="orange_gradient text-sm font-inter cursor-pointer">
+          <p
+            className="orange_gradient text-sm font-inter cursor-pointer"
+            onClick={() => handleDelete()}
+          >
             Delete
           </p>
         </div>

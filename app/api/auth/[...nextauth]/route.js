@@ -17,6 +17,10 @@ const handler = NextAuth({
   callbacks: {
     async session({ session }) {
       try {
+        console.log("Session callback: Connecting to DB...");
+        await connectToDb();
+
+        console.log("Session callback: Finding user...");
         const sessionUser = await User.findOne({ email: session.user.email });
         if (sessionUser) {
           session.user.id = sessionUser._id.toString();
@@ -59,10 +63,10 @@ const handler = NextAuth({
 const generateUsername = (name) => {
   let username = name.replace(/\s+/g, "").toLowerCase();
   if (username.length < 8) {
-    username = username + Math.random().toString(36).substring(2, 6); 
+    username = username + Math.random().toString(36).substring(2, 6);
   } else if (username.length > 20) {
     username = username.substring(0, 20);
-  }  
+  }
   return username;
 };
 
