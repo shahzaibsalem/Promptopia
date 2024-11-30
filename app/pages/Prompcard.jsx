@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import copy from "/app/public/assets/images/copy-48.png";
-import tick from "/app/public/assets/images/check-mark-3-48.png";
+import copy from "../public/assets/images/copy-48.png";
+import tick from "../public/assets/images/check-mark-3-48.png";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
