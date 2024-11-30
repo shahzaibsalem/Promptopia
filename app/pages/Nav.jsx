@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { signIn, signOut, getProviders, useSession } from "next-auth/react";
-import logo from "@/public/assets/images/promptopia_logo.png";
+import logo from '@/app/public/assets/images/promptopia_logo.png';
 const Nav = () => {
   const { data: session } = useSession();
 
