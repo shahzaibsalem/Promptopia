@@ -6,11 +6,11 @@ import copy from "@/public/assets/images/copy-48.png";
 import tick from "@/public/assets/images/check-mark-3-48.png";
 import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const Prompcard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const pathname = usePathname();
-  // const router = useRouter();
+  const router = useRouter();
   const { data: session } = useSession();
 
   const [copied, setCopied] = useState("");
@@ -23,16 +23,21 @@ const Prompcard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
     }, 4000);
   };
 
+  const imageClick = async (username, id) => {
+    router.push(`/othersprofile/${id}`);
+  };
+
   return (
     <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-5 flex-grow transition-transform transform hover:scale-105 hover:shadow-xl">
       <div className="flex justify-between items-start gap-4">
         <div className="flex items-center gap-3">
           <Image
-            className="rounded-full object-cover border-2 border-orange-400 shadow-md"
+            className="rounded-full object-cover border-2 border-orange-400 shadow-md cursor-pointer"
             src={post.creator.image}
             alt="user_image"
             width={50}
             height={50}
+            onClick={() => imageClick(post.creator.username, post.creator._id)}
           />
           <div className="flex flex-col">
             <h3 className="text-lg font-semibold text-gray-800">

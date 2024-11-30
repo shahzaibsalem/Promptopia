@@ -22,27 +22,26 @@ const Page = () => {
     router.push(`/update-post?id=${post._id}`);
   };
   const handleDelete = async (post) => {
-    alert(post._id)
     const hasConfirmed = confirm("Are you sure you want to delete this post?");
     if (hasConfirmed) {
       try {
-        console.log(post._id)
+        console.log(post._id);
         const response = await fetch(`/api/prompt/${post._id}`, {
           method: "DELETE",
         });
-  
+
         if (response.ok) {
           const filtered = posts.filter((p) => p._id !== post._id);
           setposts(filtered);
         } else {
-          console.log('Failed to delete post');
+          console.log("Failed to delete post");
         }
       } catch (error) {
-        console.log('Error:', error);
+        console.log("Error:", error);
       }
     }
   };
-  
+
   return (
     <Profile
       name="My Profile"

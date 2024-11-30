@@ -7,6 +7,6 @@ export const GET = async () => {
     const posts = await Prompt.find({}).populate("creator");
     return new Response(JSON.stringify(posts), { status: 200 });
   } catch {
-    return new Response("Failed to create new prompt", { status: 500 });
+    return new Response("Failed to find all prompt", { status: 500 });
   }
 };
