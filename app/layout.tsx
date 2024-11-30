@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Nav from "../pages/Nav";
+import Nav from "./pages/Nav";
 import Provider from '@/pages/Provider'
 
 export const metadata: Metadata = {
