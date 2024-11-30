@@ -31,5 +31,4 @@ const UserSchema = new Schema({
 });
 const User = models.User || model("User", UserSchema);
 console.log("User model defined:", User);
-console.log(process.env.MONGODB_URI)
 export default User;
