@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Nav from "./pages/Nav";
-import Provider from '@/pages/Provider'
-
+import Nav from "../pages/Nav";
+import Provider from "../pages/Provider"
 export const metadata: Metadata = {
   title: "Promptopia",
   description: "Generated and Share AI Genearted prompts",
