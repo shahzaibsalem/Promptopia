@@ -4,6 +4,15 @@ import { useState, useEffect } from "react";
 import Prompcard from "./Prompcard";
 
 const PromptCardList = ({ data, handleTagClick }) => {
+  if (!data) {
+    return (
+      <div>
+        <h1 className="head_text  text-left">
+          <span className="blue_gradient">Loading...</span>
+        </h1>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-wrap gap-6 mt-10">
       {data.map((post) => (
@@ -55,10 +64,16 @@ const Feed = () => {
 
   useEffect(() => {
     const fetchpost = async () => {
-      const res = await fetch("/api/prompt");
-      const data = await res.json();
-      setposts(data);
-      setfiltered(data);
+      try {
+        const res = await fetch("/api/prompt");
+        const data = await res.json();
+        if (data) {
+          setposts(data);
+          setfiltered(data);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     };
     fetchpost();
   }, []);
@@ -75,7 +90,12 @@ const Feed = () => {
           placeholder="Search directly for prompt , tag or username"
         />
       </form>
-      <PromptCardList data={filtered} handleTagClick={handleTagClick} />
+      {/* <PromptCardList data={filtered} handleTagClick={handleTagClick} /> */}
+      {filtered.length === 0 ? (
+        <p>No results found</p>
+      ) : (
+        <PromptCardList data={filtered} handleTagClick={handleTagClick} />
+      )}
     </section>
   );
 };

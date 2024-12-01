@@ -6,10 +6,11 @@ import { useState, useEffect } from "react";
 import { signIn, signOut, getProviders , useSession } from "next-auth/react";
 import logo from '../app/public/assets/images/promptopia_logo.png';
 const Nav = () => {
-  const { data: session } = useSession();
 
   const [providers, setproviders] = useState(null);
   const [toggledrop, settoggledrop] = useState(false);
+
+  const { data : session } = useSession();
 
   useEffect(() => {
       const setUpProviders = async () => {
@@ -18,6 +19,12 @@ const Nav = () => {
     };
     setUpProviders();
   }, []);
+
+  if(!session){
+    <h1 className="head_text  text-left">
+    <span className="blue_gradient">Loading...</span>
+  </h1>
+  }
 
   return (
     <nav className="flex-between w-full mb-16 pt-3">

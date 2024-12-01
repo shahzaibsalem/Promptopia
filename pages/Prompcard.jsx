@@ -3,16 +3,17 @@ import { useState } from "react";
 import Image from "next/image";
 import copy from "../app/public/assets/images/copy-48.ico";
 import tick from "../app/public/assets/images/check-mark-3-48.ico";
-// import { useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const Prompcard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
+  const {data : session} = useSession()
   const pathname = usePathname();
   const router = useRouter();
   const [copied, setCopied] = useState("");
 
-  if (!post) {
+  if (!post || !session) {
     return (
       <h1 className="head_text  text-left">
         <span className="blue_gradient">Loading...</span>
