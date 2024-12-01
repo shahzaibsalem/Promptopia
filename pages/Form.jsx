@@ -2,6 +2,13 @@ import React from "react";
 import Link from "next/link";
 
 const Form = ({ type, post, setpost, submitting, handleSubmit }) => {
+  if (!post || post.prompt === undefined || post.tag === undefined) {
+    return (
+      <h1 className="head_text  text-left">
+        <span className="blue_gradient">Loading...</span>
+      </h1>
+    );
+  }
   return (
     <section className="w-full  max-w-full  flex-start  flex-col">
       <h1 className="head_text  text-left">

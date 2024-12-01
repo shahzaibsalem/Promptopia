@@ -1,31 +1,33 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-    experimental: {
-      serverExternalPackages: ["mongoose"],
-    },
-    images: {
-      domains: ["lh3.googleusercontent.com"],
-    },
-    webpack(config) {
-      config.experiments = {
-        ...config.experiments,
-        topLevelAwait: true,
-      };
-      return config;
-    },
-  };
-  
+  experimental: {},
+  images: {
+    domains: ["lh3.googleusercontent.com"],
+  },
+  serverExternalPackages: ["mongoose"],
+  webpack(config) {
+    config.experiments = {
+      ...config.experiments,
+      topLevelAwait: true,
+    };
+    return config;
+  },
+};
+
 module.exports = nextConfig;
-  
+
+
 // /** @type {import('next').NextConfig} */
 // const nextConfig = {
+//   experimental: {
+//     serverComponentsExternalPackages: ["mongoose"],
+//   },
 //   images: {
-//     domains: ["lh3.googleusercontent.com"], // Valid image domain configuration
+//     domains: ["lh3.googleusercontent.com"],
 //   },
 //   webpack(config) {
 //     config.experiments = {
 //       ...config.experiments,
-//       topLevelAwait: true, // Top-level await support in webpack
+//       topLevelAwait: true,
 //     };
 //     return config;
 //   },

@@ -1,20 +1,24 @@
 "use client";
-
 import { useState } from "react";
 import Image from "next/image";
-import copy from '../app/public/assets/images/copy-48.png';
-import tick from '../app/public/assets/images/check-mark-3-48.png';
-import { useSession } from "next-auth/react";
+import copy from "../app/public/assets/images/copy-48.ico";
+import tick from "../app/public/assets/images/check-mark-3-48.ico";
+// import { useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useRouter } from "next/navigation";
 
 const Prompcard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const pathname = usePathname();
   const router = useRouter();
-  const { data: session } = useSession();
-
   const [copied, setCopied] = useState("");
 
+  if (!post) {
+    return (
+      <h1 className="head_text  text-left">
+        <span className="blue_gradient">Loading...</span>
+      </h1>
+    );
+  }
   const handleCopy = () => {
     setCopied(post.prompt);
     navigator.clipboard.writeText(post.post);
