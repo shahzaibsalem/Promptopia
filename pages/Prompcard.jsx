@@ -13,7 +13,7 @@ const Prompcard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
   const router = useRouter();
   const [copied, setCopied] = useState("");
 
-  if (!post || !session) {
+  if (!post || !session || !data) {
     return (
       <h1 className="head_text  text-left">
         <span className="blue_gradient">Loading...</span>
